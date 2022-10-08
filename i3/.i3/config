@@ -4,6 +4,9 @@
 # restore nitrogen background on startup
 exec --no-startup-id nitrogen --restore
 
+# using caffeine to stop screen locking during video playback
+exec --no-startup-id caffeine
+
 # restore nitrogen backgroun external mon
 bindsym $mod+Shift+n exec --no-startup-id nitrogen --restore
 
@@ -14,7 +17,7 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
+default_border pixel 3
 default_floating_border normal
 
 # Hide borders
@@ -295,7 +298,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 5 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
