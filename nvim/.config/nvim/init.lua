@@ -104,6 +104,14 @@ vim.wo.number = true
 -- Set relative line numbers
 vim.opt.relativenumber = true
 
+-- Indentation
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
