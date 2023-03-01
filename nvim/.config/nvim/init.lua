@@ -101,6 +101,9 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
+-- Set relative line numbers
+vim.opt.relativenumber = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -343,7 +346,7 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
