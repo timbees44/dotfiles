@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/tim/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/tim/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/tim/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -150,11 +155,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/tim/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
-  },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "/Users/tim/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
