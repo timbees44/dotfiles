@@ -8,9 +8,9 @@ red = "0xea6962"
 white = "0xdfbf8e"
 yellow = "0xe3a84e"
 
-#[colors.font.normal]
-#family = "Hack Nerd Font"
-#style = "Regular"
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
 
 [colors.normal]
 black = "0x665c54"
