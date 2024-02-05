@@ -99,3 +99,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias ctfhere="docker run --rm -it -v /Users/tim/projects/ctfs:/ctfs --cap-add=NET_ADMIN --device=/dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 --name ctf kali"
+alias vim="nvim"
+alias vi="nvim"
+alias sb="cd ~/Documents/Obsidian\ Vault/"
+alias proj="cd ~/projects/"
+alias dot="cd ~/.dotfiles/"
