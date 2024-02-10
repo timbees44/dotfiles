@@ -3,11 +3,8 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        float = "transparent",
-      },
+      transparent_mode = true,
+      terminal_colors = true,
     },
   },
 
