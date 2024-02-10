@@ -26,6 +26,27 @@ return {
         name = "work",
         path = "~/vaults/work",
       },
+
+      -- Daily note config
+      daily_notes = {
+        -- Optional, if you keep daily notes in a separate directory.
+        folder = "~/Documents/second_brain/daily/",
+        -- Optional, if you want to change the date format for the ID of daily notes.
+        date_format = "%Y-%m-%d",
+        -- Optional, if you want to change the date format of the default alias of daily notes.
+        alias_format = "%B %-d, %Y",
+        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+        template = "~/Documents/second_brain/templates/{{Date}}.md",
+      },
+    },
+
+    -- Optional, for templates (see below).
+    templates = {
+      subdir = "templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+      -- A map for custom variables, the key should be the variable and the value a function
+      substitutions = {},
     },
 
     -- see below for full list of options 👇
