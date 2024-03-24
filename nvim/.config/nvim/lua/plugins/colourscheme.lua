@@ -21,6 +21,8 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
+      transparent_background = true,
+      terminal_colors = true,
       integrations = {
         aerial = true,
         alpha = true,
