@@ -63,7 +63,7 @@ return {
     -- Configure LazyVim to load colourscheme
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "catppuccin",
     },
   },
 }
