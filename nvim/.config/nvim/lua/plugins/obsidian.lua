@@ -22,10 +22,6 @@ return {
         name = "personal",
         path = "~/Documents/second_brain",
       },
-      {
-        name = "work",
-        path = "~/vaults/work",
-      },
     },
     -- Daily note config
     daily_notes = {
