@@ -15,18 +15,18 @@ path=$HOME/Documents/second_brain/daily/${year}/${month}/${today}.md
 sb_path=$HOME/Documents/second_brain
 
 # Check if year and month exist for daily note
-if [ ! -d "${sb_path}/${year}" ]; then
-	mkdir "${sb_path}/${year}"
+if [ ! -d ${sb_path}/daily/${year} ]; then
+	mkdir ${sb_path}/daily/${year}
 fi
-if [ ! -d "${sb_path}/${year}/${month}" ]; then
-	mkdir "${sb_path}/${year}/${month}"
+if [ ! -d ${sb_path}/daily/${year}/${month} ]; then
+	mkdir ${sb_path}/daily/${year}/${month}
 fi
-if [ ! -f "${path}" ]; then
+if [ ! -f ${path} ]; then
 	echo "Daily note not found. Attempting to make now..."
-	if [ ! -d "${sb_path}" ]; then
+	if [ ! -d ${sb_path} ]; then
 		echo "Template not found. Looks like your vault is jacked up..."
 	fi
-	cp "${template_path} ${path}"
+	cp ${template_path} ${path}
 fi
 
-nvim "${path}"
+nvim ${path}
