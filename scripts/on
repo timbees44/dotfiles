@@ -8,5 +8,5 @@ fi
 file_name=$(echo "$1" | tr ' ' '-')
 formatted_file_name=$(date "+%Y-%m-%d")_${file_name}.md
 cd "$HOME/Documents/second_brain" || exit
-touch "inbox/${formatted_file_name}"
-nvim "inbox/${formatted_file_name}"
+touch "0_inbox/${formatted_file_name}"
+nvim "0_inbox/${formatted_file_name}"
