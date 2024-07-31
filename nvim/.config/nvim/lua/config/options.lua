@@ -4,3 +4,12 @@
 
 -- conceal level
 vim.opt.conceallevel = 2
+
+-- enable line wrapping
+vim.opt.wrap = true
+
+-- Prevent breaking words
+vim.opt.linebreak = true
+
+-- Indent wrapped lines visually
+vim.opt.breakindent = true
