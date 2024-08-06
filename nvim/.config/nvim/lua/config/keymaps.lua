@@ -24,9 +24,11 @@ vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
 vim.keymap.set("n", "<leader>os", ':Telescope find_files search_dirs={"$HOME/Documents/second_brain/"}<cr>')
 vim.keymap.set("n", "<leader>oz", ':Telescope live_grep search_dirs={"$HOME/Documents/second_brain/"}<cr>')
 --
--- search for files in notes (ignore zettelkasten)
--- vim.keymap.set("n", "<leader>ois", ":Telescope find_files search_dirs={\"/Users/alex/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/ZazenCodes/notes\"}<cr>")
--- vim.keymap.set("n", "<leader>oiz", ":Telescope live_grep search_dirs={\"/Users/alex/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/ZazenCodes/notes\"}<cr>")
+-- search for files in projects
+vim.keymap.set("n", "<leader>op", ':Telescope live_grep search_dirs={"$HOME/projects/"}<cr>')
+--
+-- open daily note
+vim.keymap.set("n", "<leader>ot", ":ObsidianToday")
 --
 -- for review workflow
 -- move file in current buffer to zettelkasten folder
