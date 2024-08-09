@@ -1,3 +1,6 @@
+-- require the obsidian.lua config
+local obsidian = require("plugins.obsidian")
+
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -35,6 +38,10 @@ vim.keymap.set("n", "<leader>ok", ":!mv '%:p' $HOME/Documents/second_brain/zette
 vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>")
 
 -- create new obisidian note
+
+-- retrieve the note_id_func from obsidian module
+local note_id_func = obsidian.note_id_func
+
 local function create_obsidian_note_with_date()
   local date = os.date("%Y-%m-%d")
   vim.ui.input({ prompt = "Enter note name: " }, function(note_name)
@@ -43,7 +50,8 @@ local function create_obsidian_note_with_date()
       return
     end
 
-    local formatted_name = date .. "_" .. note_name:gsub("%s+", "-")
+    local note_id = note_id_func(note_name)
+    local formatted_name = date .. "_" .. note_id .. ".md"
     vim.cmd("ObsidianNew " .. formatted_name)
   end)
 end

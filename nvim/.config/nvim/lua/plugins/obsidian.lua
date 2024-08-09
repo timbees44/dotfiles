@@ -1,3 +1,21 @@
+local M = {}
+
+M.note_id_func = function(title)
+  local timestamp = os.time() -- Get the current Unix timestamp
+  local suffix = ""
+  if title ~= nil then
+    -- Transform title into a valid file name suffix
+    suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+  else
+    -- If no title is given, generate a random suffix (optional)
+    for _ = 1, 4 do
+      suffix = suffix .. string.char(math.random(65, 90))
+    end
+  end
+  -- Return the note ID formatted with the Unix timestamp and suffix
+  return tostring(timestamp) .. "-" .. suffix
+end
+
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
@@ -43,5 +61,11 @@ return {
       -- A map for custom variables, the key should be the variable and the value a function
       substitutions = {},
     },
+
+    -- Using the function inside obsidian.nvim's opts (optional)
+    note_id_func = M.note_id_func,
+    config = function()
+      -- Optional: Define additional configurations or functions for obsidian.nvim here
+    end,
   },
 }
