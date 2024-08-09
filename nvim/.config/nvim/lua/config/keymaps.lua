@@ -14,8 +14,6 @@ vim.keymap.del("v", "<A-k>", { desc = "Move up" })
 -- navigate to vault
 vim.keymap.set("n", "<leader>oo", ":cd $HOME/Documents/second_brain/")
 --
--- convert note to template and remove leading white space
-vim.keymap.set("n", "<leader>on", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
 -- strip date from note title and replace dashes with spaces
 -- must have cursor on title
 vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
@@ -35,3 +33,19 @@ vim.keymap.set("n", "<leader>ot", ":ObsidianToday")
 vim.keymap.set("n", "<leader>ok", ":!mv '%:p' $HOME/Documents/second_brain/zettelkasten<cr>:bd<cr>")
 -- delete file in current buffer
 vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>")
+
+-- create new obisidian note
+local function create_obsidian_note_with_date()
+  local date = os.date("%Y-%m-%d")
+  vim.ui.input({ prompt = "Enter note name: " }, function(note_name)
+    if note_name == nil or note_name == "" then
+      print("Note creation cancelled")
+      return
+    end
+
+    local formatted_name = date .. "_" .. note_name:gsub("%s+", "-")
+    vim.cmd("ObsidianNew " .. formatted_name)
+  end)
+end
+
+vim.keymap.set("n", "<leader>on", create_obsidian_note_with_date, { noremap = true, silent = true })
