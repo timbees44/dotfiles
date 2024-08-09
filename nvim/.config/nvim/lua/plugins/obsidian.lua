@@ -43,22 +43,5 @@ return {
       -- A map for custom variables, the key should be the variable and the value a function
       substitutions = {},
     },
-
-    config = function()
-      local function create_obsidian_note_with_date()
-        local date = os.date("%Y-%m-%d")
-        vim.ui.input({ prompt = "Enter note name: " }, function(note_name)
-          if note_name == nil or note_name == "" then
-            print("Note creation cancelled")
-            return
-          end
-
-          local formatted_name = date .. "_" .. note_name:gsub("%s+", "-")
-          vim.cmd("ObsidianNew " .. formatted_name)
-        end)
-      end
-
-      vim.keymap.set("n", "<leader>on", create_obsidian_note_with_date, { noremap = true, silent = true })
-    end,
   },
 }
