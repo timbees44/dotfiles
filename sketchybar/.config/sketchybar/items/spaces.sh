@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 
-# Debugging
-DEBUG_LOG="$HOME/.config/sketchybar/debug.log"
-echo "=== Debugging Log: $(date) ===" >"$DEBUG_LOG"
-
 # Colors
 RED=0xffed8796
 BACKGROUND_COLOR=0x44ffffff
@@ -11,12 +7,11 @@ BACKGROUND_COLOR=0x44ffffff
 # Function to update the focused workspace
 update_focused_workspace() {
   FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
-  echo "Focused Workspace: $FOCUSED_WORKSPACE" >>"$DEBUG_LOG"
 
   if [ -n "$FOCUSED_WORKSPACE" ]; then
     sketchybar --set "space.focused" icon="$FOCUSED_WORKSPACE"
   else
-    echo "No focused workspace detected" >>"$DEBUG_LOG"
+    echo "No focused workspace detected"
   fi
 }
 
