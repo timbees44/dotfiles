@@ -102,13 +102,7 @@ outer.right =      5
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
-alt-comma = '''
-layout accordion horizontal vertical
-exec-and-forget osascript -e '
-tell application "System Events"
-    set visible of every process whose visible is false to false
-end tell'
-'''
+alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
