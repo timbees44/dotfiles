@@ -163,7 +163,7 @@ macos-titlebar-style = hidden
 confirm-close-surface = false
 
 # opacity
-background-opacity = 0.7
+# background-opacity = 0.7
 
 # Toggle the "quick" terminal. The quick terminal is a terminal that
 # appears on demand from a keybinding, often sliding in from a screen
