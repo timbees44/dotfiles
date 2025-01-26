@@ -27,36 +27,6 @@ yabai -m config left_padding 05
 yabai -m config right_padding 05
 
 ###############################################################################
-#                               Transparency
-###############################################################################
-
-# Enable or disable transparency
-yabai -m config window_opacity on
-# yabai -m config window_opacity off
-
-opacity_value=0.87
-
-# Make the below apps transparent
-yabai -m signal --add event=window_focused app="^${apps_transparent}$" action="yabai -m config active_window_opacity $opacity_value"
-yabai -m signal --add event=window_focused app="^${apps_transparent}$" action="yabai -m config normal_window_opacity 0.00001"
-
-# I want the apps here to always be shown, probably they'll be on the right
-# padding section. This is my "sticky notes"
-yabai -m rule --add app="^${apps_transp_ignore}$" opacity=$opacity_value
-
-# When any other app gains focus, reset both active and background window opacity to fully visible
-yabai -m signal --add event=window_focused app!="^${apps_transparent}$" action="yabai -m config active_window_opacity 1.0"
-yabai -m signal --add event=window_focused app!="^${apps_transparent}$" action="yabai -m config normal_window_opacity 1.0"
-
-# yabai -m signal --add event=window_focused app=".*CleanShot X.*" action="yabai -m config active_window_opacity 1.0"
-# yabai -m signal --add event=window_focused app=".*CleanShot X.*" action="yabai -m config normal_window_opacity 1.0"
-
-# Nice trick shared by @timhansinger8030 in my YouTube video https://youtu.be/SLCR1oO65GI
-# Allows to see mission control apps when calling mission control from a transparent app
-yabai -m signal --add event=mission_control_enter action="yabai -m config normal_window_opacity 1.0"
-yabai -m signal --add event=mission_control_exit action="yabai -m config active_window_opacity 1.0"
-
-###############################################################################
 #                             sub-layer=normal
 ###############################################################################
 
