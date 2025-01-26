@@ -15,7 +15,7 @@ apps_transparent="(Spotify|Ghostty|Brave Browser)"
 
 # This keeps apps always below, seems to be working fine when I switch to other
 # apps
-apps_mgoff_below="(Calculator|iStat Menus|Activity Monitor|App StoreSoftware Update|CleanShot X|Raycast|Stickies|Brave Browser|Ghostty)"
+apps_mgoff_below="(Calculator|iStat Menus|Activity Monitor|App StoreSoftware Update|CleanShot X|Raycast|Stickies|Brave Browser)"
 
 # This keeps apps always on the top
 apps_mgoff_above="()"
