@@ -41,6 +41,7 @@ return {
         path = "~/Documents/second_brain",
       },
     },
+
     -- Daily note config
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
