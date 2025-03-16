@@ -26,7 +26,13 @@ vim.keymap.set("n", "<leader>os", ':Telescope find_files search_dirs={"$HOME/Doc
 vim.keymap.set("n", "<leader>oz", ':Telescope live_grep search_dirs={"$HOME/Documents/second_brain/"}<cr>')
 --
 -- search for files in projects
-vim.keymap.set("n", "<leader>op", ':Telescope live_grep search_dirs={"$HOME/projects/"}<cr>')
+-- vim.keymap.set("n", "<leader>op", ':Telescope live_grep search_dirs={"$HOME/projects/"}<cr>')
+vim.keymap.set("n", "<leader>op", function()
+  require("telescope.builtin").live_grep({
+    search_dirs = { vim.fn.expand("$HOME") .. "/projects/" },
+  })
+end, { desc = "Open live grep for projects" })
+
 --
 -- open daily note
 vim.keymap.set("n", "<leader>ot", ":ObsidianToday")

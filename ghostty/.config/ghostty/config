@@ -22,7 +22,7 @@
 # 
 # Cycles are not allowed. If a cycle is detected, an error will be logged and
 # the configuration file will be ignored.
-config-file = ghostty-theme
+config-file = ghostty-catppuccin-theme
 
 # Some shaders can be found in this repo, they're usually uploaded to discord
 # https://github.com/hackrmomo/ghostty-shaders
@@ -33,7 +33,7 @@ config-file = ghostty-theme
 # custom-shader = shaders/bloom075.glsl
 # custom-shader = shaders/bloom060.glsl
 # custom-shader = shaders/bloom050.glsl
-custom-shader = shaders/bloom025.glsl
+# custom-shader = shaders/bloom025.glsl
 # custom-shader = shaders/bloom050.glsl
 # custom-shader = shaders/bloom060.glsl
 # custom-shader = shaders/bloom075.glsl
