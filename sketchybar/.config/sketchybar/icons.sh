@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Filename: ~/github/dotfiles-latest/sketchybar/felixkratz/icons.sh
-
 # General Icons
 LOADING=􀖇
 APPLE=􀣺
-ALIEN=👾
 PREFERENCES=􀺽
 ACTIVITY=􀒓
 LOCK=􀒳
@@ -51,7 +48,6 @@ VOLUME_0=􀊣
 # WiFi
 WIFI_CONNECTED=􀙇
 WIFI_DISCONNECTED=􀙈
-ETHERNET_CONNECTED=󰈀
 
 # svim
 MODE_NORMAL=􀂯

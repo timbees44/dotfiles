@@ -13,3 +13,6 @@ vim.opt.linebreak = true
 
 -- Indent wrapped lines visually
 vim.opt.breakindent = true
+
+-- set column wrap
+vim.opt.columns = 80

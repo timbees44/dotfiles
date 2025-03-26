@@ -1,19 +1,18 @@
 local M = {}
 
+-- New function that formats the file name using datetime
 M.note_id_func = function(title)
-  local timestamp = os.time() -- Get the current Unix timestamp
-  local suffix = ""
-  if title ~= nil then
-    -- Transform title into a valid file name suffix
-    suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-  else
-    -- If no title is given, generate a random suffix (optional)
-    for _ = 1, 4 do
-      suffix = suffix .. string.char(math.random(65, 90))
-    end
+  -- Get the current date and time in the format YYYY-MM-DD-HH-MM-SS
+  local datetime = os.date("%Y-%m-%d")
+  -- If no title is provided, use the datetime as the filename
+  if not title or title == "" then
+    title = "note"
   end
-  -- Return the note ID formatted with the Unix timestamp and suffix
-  return tostring(timestamp) .. "-" .. suffix
+  -- Replace spaces with hyphens and ensure the filename is safe
+  local file_name = title:gsub(" ", "-"):gsub("[^A-Za-z0-9%-%_]", ""):lower()
+  -- Combine the datetime with the cleaned-up title to generate the final filename
+  local formatted_file_name = datetime .. "_" .. file_name .. ".md"
+  return formatted_file_name
 end
 
 return {

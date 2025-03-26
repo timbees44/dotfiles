@@ -28,10 +28,10 @@ vim.keymap.set("n", "<leader>oz", ':Telescope live_grep search_dirs={"$HOME/Docu
 -- search for files in projects
 -- vim.keymap.set("n", "<leader>op", ':Telescope live_grep search_dirs={"$HOME/projects/"}<cr>')
 vim.keymap.set("n", "<leader>op", function()
-  require("telescope.builtin").live_grep({
+  require("telescope.builtin").find_files({
     search_dirs = { vim.fn.expand("$HOME") .. "/projects/" },
   })
-end, { desc = "Open live grep for projects" })
+end, { desc = "Open find files for projects" })
 
 --
 -- open daily note
@@ -46,20 +46,22 @@ vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>")
 -- create new obisidian note
 
 -- retrieve the note_id_func from obsidian module
-local note_id_func = obsidian.note_id_func
+-- local note_id_func = obsidian.note_id_func
 
-local function create_obsidian_note_with_date()
-  local date = os.date("%Y-%m-%d")
-  vim.ui.input({ prompt = "Enter note name: " }, function(note_name)
-    if note_name == nil or note_name == "" then
-      print("Note creation cancelled")
-      return
-    end
+-- local function create_obsidian_note_with_date()
+--   local date = os.date("%Y-%m-%d")
+--   vim.ui.input({ prompt = "Enter note name: " }, function(note_name)
+--     if note_name == nil or note_name == "" then
+--       print("Note creation cancelled")
+--       return
+--     end
+--
+--     local note_id = note_id_func(note_name)
+--     local formatted_name = date .. "_" .. note_id .. ".md"
+--     vim.cmd("ObsidianNew " .. formatted_name)
+--   end)
+-- end
 
-    local note_id = note_id_func(note_name)
-    local formatted_name = date .. "_" .. note_id .. ".md"
-    vim.cmd("ObsidianNew " .. formatted_name)
-  end)
-end
-
-vim.keymap.set("n", "<leader>on", create_obsidian_note_with_date, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>on", function()
+  vim.cmd("ObsidianNew")
+end, { desc = "Create New Obsidian Note" })
