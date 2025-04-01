@@ -30,20 +30,35 @@
 # export BG1=0x603c3e4f
 # export BG2=0x60494d64
 
-### Gruvbox
-export BLACK=0xff181926
-export WHITE=0xffEBDBB2
-export RED=0xffCC241D
-export GREEN=0xff98971A
-export BLUE=0xff458588
-export YELLOW=0xffD79921
-export ORANGE=0xffD65D0
-export MAGENTA=0xffB16286
-export GREY=0xff504945
+### Tokyonight-Storm
+export BLACK=0xff1a1b26
+export WHITE=0xffc0caf5
+export RED=0xfff7768e
+export GREEN=0xff9ece6a
+export BLUE=0xff7aa2f7
+export YELLOW=0xffe0af68
+export ORANGE=0xffff9e64
+export MAGENTA=0xffbb9af7
+export GREY=0xff444b6a
 export TRANSPARENT=0x00000000
-export BG0=0xff282828
-export BG1=0x601D2021
-export BG2=0x60494d64
+export BG0=0xff24283b
+export BG1=0x60202a37
+export BG2=0x60404056
+
+### Gruvbox
+# export BLACK=0xff181926
+# export WHITE=0xffEBDBB2
+# export RED=0xffCC241D
+# export GREEN=0xff98971A
+# export BLUE=0xff458588
+# export YELLOW=0xffD79921
+# export ORANGE=0xffD65D0
+# export MAGENTA=0xffB16286
+# export GREY=0xff504945
+# export TRANSPARENT=0x00000000
+# export BG0=0xff282828
+# export BG1=0x601D2021
+# export BG2=0x60494d64
 
 # General bar colors
 export BAR_COLOR=$TRANSPARENT
