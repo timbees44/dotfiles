@@ -10,3 +10,7 @@ yabai -m config \
 
 # Ignore certain apps
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^ZwiftAppSilicon$" manage=off
+
+# Unique management of apps
+yabai -m rule --add app="Emacs" manage=on focus=on

@@ -3,8 +3,9 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     opts = {
-      transparent_mode = true,
+      transparent_mode = false,
       terminal_colors = true,
+      contrast = "hard",
     },
   },
 
@@ -106,7 +107,7 @@ return {
     -- Configure LazyVim to load colourscheme
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "tokyonight",
     },
   },
 }

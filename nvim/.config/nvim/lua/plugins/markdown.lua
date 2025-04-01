@@ -22,5 +22,13 @@ return {
       above = 0,
       below = 0,
     },
+    bullet = { right_pad = 1 },
+    heading = {
+      position = "inline",
+      width = "block",
+    },
+    checkbox = {
+      right_pad = 5,
+    },
   },
 }
