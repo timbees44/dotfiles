@@ -13,7 +13,19 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "moon" },
+    opts = {
+      style = "moon",
+      transparent = true,
+    },
+  },
+
+  {
+    "shaunsingh/nord.nvim",
+    priority = 1000, -- Load before other UI plugins
+    lazy = false, -- Load immediately during startup
+    config = function()
+      vim.g.nord_disable_background = true
+    end,
   },
 
   -- catppuccin
@@ -107,7 +119,7 @@ return {
     -- Configure LazyVim to load colourscheme
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin",
     },
   },
 }

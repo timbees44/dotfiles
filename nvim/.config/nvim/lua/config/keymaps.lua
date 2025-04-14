@@ -43,25 +43,10 @@ vim.keymap.set("n", "<leader>ok", ":!mv '%:p' $HOME/Documents/second_brain/zette
 -- delete file in current buffer
 vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<cr>:bd<cr>")
 
--- create new obisidian note
-
--- retrieve the note_id_func from obsidian module
--- local note_id_func = obsidian.note_id_func
-
--- local function create_obsidian_note_with_date()
---   local date = os.date("%Y-%m-%d")
---   vim.ui.input({ prompt = "Enter note name: " }, function(note_name)
---     if note_name == nil or note_name == "" then
---       print("Note creation cancelled")
---       return
---     end
---
---     local note_id = note_id_func(note_name)
---     local formatted_name = date .. "_" .. note_id .. ".md"
---     vim.cmd("ObsidianNew " .. formatted_name)
---   end)
--- end
-
 vim.keymap.set("n", "<leader>on", function()
   vim.cmd("ObsidianNew")
+end, { desc = "Create New Obsidian Note" })
+
+vim.keymap.set("n", "<leader>oN", function()
+  vim.cmd("ObsidianNewFromTemplate")
 end, { desc = "Create New Obsidian Note" })

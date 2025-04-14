@@ -14,3 +14,4 @@ yabai -m rule --add app="^ZwiftAppSilicon$" manage=off
 
 # Unique management of apps
 yabai -m rule --add app="Emacs" manage=on focus=on
+yabai -m rule --add app="WezTerm" manage=on focus=on
