@@ -28,6 +28,13 @@ return {
     end,
   },
 
+  -- Cyberdream
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
   -- catppuccin
   {
     "catppuccin/nvim",
@@ -119,7 +126,7 @@ return {
     -- Configure LazyVim to load colourscheme
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "cyberdream",
     },
   },
 }
