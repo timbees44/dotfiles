@@ -1,5 +1,3 @@
-local Util = require("tokyonight.util")
-
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   enabled = true,
@@ -28,6 +26,14 @@ return {
     heading = {
       position = "inline",
       width = "block",
+      icons = {
+        "一",
+        "二",
+        "三",
+        "四",
+        "五",
+        "六",
+      },
     },
     checkbox = {
       right_pad = 1,

@@ -33,7 +33,18 @@ return {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
+    opts = function(_, opts)
+      opts.transparent = true
+    end,
   },
+
+  {
+    "EdenEast/nightfox.nvim",
+    options = {
+      transparent = true,
+      terminal_colors = true,
+    },
+  }, -- lazy
 
   -- catppuccin
   {
@@ -126,7 +137,7 @@ return {
     -- Configure LazyVim to load colourscheme
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "cyberdream",
+      colorscheme = "carbonfox",
     },
   },
 }

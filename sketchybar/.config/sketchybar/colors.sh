@@ -16,17 +16,34 @@
 # export BG2=0xff414550
 
 ### Catppuccin
-export BLACK=0xff181926
-export WHITE=0xffcad3f5
-export RED=0xffed8796
-export GREEN=0xffa6da95
-export BLUE=0xff8aadf4
-export YELLOW=0xffeed49f
-export ORANGE=0xfff5a97f
-export MAGENTA=0xffc6a0f6
-export GREY=0xff939ab7
+# export BLACK=0xff181926
+# export WHITE=0xffcad3f5
+# export RED=0xffed8796
+# export GREEN=0xffa6da95
+# export BLUE=0xff8aadf4
+# export YELLOW=0xffeed49f
+# export ORANGE=0xfff5a97f
+# export MAGENTA=0xffc6a0f6
+# export GREY=0xff939ab7
+# export TRANSPARENT=0x00000000
+# export BG0=0xff1e1e2e
+# export BG1=0x603c3e4f
+# export BG2=0x60494d64
+
+# CarbonFox
+export BLACK=0xff282828
+export WHITE=0xffdfdfe0
+export RED=0xffee5396
+export GREEN=0xff25be6a
+export BLUE=0xff33b1ff # Note: you had two BLUEs, kept the last one
+export YELLOW=0xff08bdba
+export ORANGE=0xffff6c3f
+export MAGENTA=0xffbe95ff
+export GREY=0xff3b4252
+
 export TRANSPARENT=0x00000000
-export BG0=0xff1e1e2e
+
+export BG0=0xff161616
 export BG1=0x603c3e4f
 export BG2=0x60494d64
 
