@@ -24,7 +24,7 @@ config.enable_tab_bar = false
 config.window_background_image = "/Users/tim/Pictures/wallpaper/night_city_car.png"
 config.window_background_opacity = 1.0
 config.window_background_image_hsb = {
-	brightness = 0.10, -- Reduce brightness
+	brightness = 0.15, -- Reduce brightness
 	hue = 1.0, -- Keep hue unchanged
 	saturation = 1.0, -- Reduce saturation if necessary
 }
