@@ -92,6 +92,11 @@ return {
     },
   },
 
+  -- cyberpunk
+  {
+    "akai54/2077.nvim",
+    name = "2077",
+  },
   -- eldritch
   {
     "eldritch-theme/eldritch.nvim",
@@ -137,7 +142,7 @@ return {
     -- Configure LazyVim to load colourscheme
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "carbonfox",
+      colorscheme = "gruvbox",
     },
   },
 }

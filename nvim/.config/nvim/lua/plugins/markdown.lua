@@ -16,7 +16,7 @@ return {
       --  head_icon, head_background, head_border, code_language, code_background, code_border
       --  dash, bullet, check_icon, check_scope, quote, table_border, callout, link, sign
       ignore = {
-        code_background = true,
+        code_background = false,
         sign = true,
       },
       above = 0,
@@ -25,15 +25,11 @@ return {
     bullet = { right_pad = 1 },
     heading = {
       position = "inline",
-      width = "block",
-      icons = {
-        "一",
-        "二",
-        "三",
-        "四",
-        "五",
-        "六",
-      },
+      width = "full",
+      icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+      backgrounds = {
+    },
+
     },
     checkbox = {
       right_pad = 1,

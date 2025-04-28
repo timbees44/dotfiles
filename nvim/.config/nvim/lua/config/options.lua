@@ -16,3 +16,6 @@ vim.opt.breakindent = true
 
 -- set text wrap
 vim.opt.textwidth = 80
+
+-- remove cursor line
+vim.opt.cursorline = false
