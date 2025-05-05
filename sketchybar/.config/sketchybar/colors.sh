@@ -31,21 +31,21 @@
 # export BG2=0x60494d64
 
 # CarbonFox
-export BLACK=0xff282828
-export WHITE=0xffdfdfe0
-export RED=0xffee5396
-export GREEN=0xff25be6a
-export BLUE=0xff33b1ff # Note: you had two BLUEs, kept the last one
-export YELLOW=0xff08bdba
-export ORANGE=0xffff6c3f
-export MAGENTA=0xffbe95ff
-export GREY=0xff3b4252
-
-export TRANSPARENT=0x00000000
-
-export BG0=0xff161616
-export BG1=0x603c3e4f
-export BG2=0x60494d64
+# export BLACK=0xff282828
+# export WHITE=0xffdfdfe0
+# export RED=0xffee5396
+# export GREEN=0xff25be6a
+# export BLUE=0xff33b1ff # Note: you had two BLUEs, kept the last one
+# export YELLOW=0xff08bdba
+# export ORANGE=0xffff6c3f
+# export MAGENTA=0xffbe95ff
+# export GREY=0xff3b4252
+#
+# export TRANSPARENT=0x00000000
+#
+# export BG0=0xff161616
+# export BG1=0x603c3e4f
+# export BG2=0x60494d64
 
 ### Nord
 # export BLACK=0xff2e3440   # Polar Night 1
@@ -79,19 +79,19 @@ export BG2=0x60494d64
 # export BG2=0x60404056
 
 ### Gruvbox
-# export BLACK=0xff181926
-# export WHITE=0xffEBDBB2
-# export RED=0xffCC241D
-# export GREEN=0xff98971A
-# export BLUE=0xff458588
-# export YELLOW=0xffD79921
-# export ORANGE=0xffD65D0
-# export MAGENTA=0xffB16286
-# export GREY=0xff504945
-# export TRANSPARENT=0x00000000
-# export BG0=0xff282828
-# export BG1=0x601D2021
-# export BG2=0x60494d64
+export BLACK=0xff181926
+export WHITE=0xffEBDBB2
+export RED=0xffCC241D
+export GREEN=0xff98971A
+export BLUE=0xff458588
+export YELLOW=0xffD79921
+export ORANGE=0xffD65D0
+export MAGENTA=0xffB16286
+export GREY=0xff504945
+export TRANSPARENT=0x00000000
+export BG0=0xff282828
+export BG1=0x601D2021
+export BG2=0x60494d64
 
 # General bar colors
 export BAR_COLOR=$TRANSPARENT
