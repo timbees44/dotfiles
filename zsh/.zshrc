@@ -79,8 +79,12 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 compinit
 
+# Misc Exports
+export EDITOR='vi'
+
 # Aliases
 alias vi="nvim"
+alias vim="nvim"
 alias ll="ls -l"
 alias sb="cd ~/Documents/second_brain/"
 alias pr="cd ~/projects/"

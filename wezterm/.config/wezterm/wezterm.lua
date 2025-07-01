@@ -22,5 +22,44 @@ config.enable_tab_bar = false
 -- Window bar
 config.window_decorations = "RESIZE"
 
+config.keys = {
+	{
+		key = "H",
+		mods = "CMD",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = {
+				"zsh",
+				"-l",
+				"-c",
+				"/opt/homebrew/bin/tmuxinator start htb",
+			},
+		}),
+	},
+	{
+		key = "S",
+		mods = "CMD",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = {
+				"zsh",
+				"-l",
+				"-c",
+				"/opt/homebrew/bin/sesh connect second_brain",
+			},
+		}),
+	},
+	{
+		key = "V",
+		mods = "CMD",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = {
+				"zsh",
+				"-l",
+				"-c",
+				"/opt/homebrew/bin/tmuxinator start vps",
+			},
+		}),
+	},
+}
+
 -- and finally, return the configuration to wezterm
 return config

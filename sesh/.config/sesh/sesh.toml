@@ -1,0 +1,10 @@
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "ll"
+
+#[[session]]
+#name = "htb 🍱"
+#path = "~/projects/htb/"
+#startup_command = "tmuxinator start htb"
+#preview_command = "bat --color=always ~/projects/kali-pod/Containerfile"
