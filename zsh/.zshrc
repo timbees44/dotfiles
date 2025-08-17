@@ -12,6 +12,9 @@ export LSCOLORS=GxFxCxDxBxegedabagacad
 # Export Emacs bin path
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
+# Export local/bin
+export PATH="$HOME/.local/bin:$PATH"
+
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"

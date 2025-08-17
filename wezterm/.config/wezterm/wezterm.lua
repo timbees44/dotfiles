@@ -11,20 +11,19 @@ config.color_scheme = "Gruvbox Dark (Gogh)"
 config.enable_tab_bar = false
 
 -- Background Image
--- config.window_background_image = "Users/tim/Pictures/wallpaper/tokyo-night.jpg"
--- config.window_background_opacity = 1.0
--- config.window_background_image_hsb = {
--- 	brightness = 0.07, -- Reduce brightness
--- 	hue = 1.0, -- Keep hue unchanged
--- 	saturation = 1.0, -- Reduce saturation if necessary
--- }
+config.window_background_image = "Users/tim/Pictures/wallpaper/gruvbox-wallpapers/gruvbox_knights.png"
+config.window_background_image_hsb = {
+	brightness = 0.05, -- Reduce brightness
+	hue = 1.0,      -- Keep hue unchanged
+	saturation = 1.0, -- Reduce saturation if necessary
+}
 
 -- Window bar
 config.window_decorations = "RESIZE"
 
 config.keys = {
 	{
-		key = "H",
+		key = "B",
 		mods = "CMD",
 		action = wezterm.action.SpawnCommandInNewTab({
 			args = {

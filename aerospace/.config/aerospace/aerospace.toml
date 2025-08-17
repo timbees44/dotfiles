@@ -4,14 +4,14 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
  #after-startup-command = []
 
-after-startup-command = ['exec-and-forget sketchybar']
+#after-startup-command = ['exec-and-forget sketchybar']
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "Picture in Picture" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
-    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "zsh" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE;',
-]
+#exec-on-workspace-change = ['/bin/bash', '-c',
+#    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "Picture in Picture" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
+#    #'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE; aerospace list-windows --all | grep "zsh" | cut -d"|" -f1 | xargs aerospace move-node-to-workspace $AEROSPACE_FOCUSED_WORKSPACE --window-id',
+#    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE;',
+#]
 
 start-at-login = true
 

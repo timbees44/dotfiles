@@ -1,0 +1,77 @@
+return {
+
+  { "nvim-lua/plenary.nvim" },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+
+  -- LSP Config
+  {
+    "neovim/nvim-lspconfig",
+  },
+
+  -- Mason for automatic server installation
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+
+
+{
+  "williamboman/mason-lspconfig.nvim",
+  dependencies = { "nvim-lspconfig", "williamboman/mason.nvim" },
+  config = function()
+	local mason_lspconfig = require("mason-lspconfig")
+	local lspconfig = require("lspconfig")
+
+	    -- List of language servers you want installed and configured
+    local servers = { "pyright", "lua_ls" }
+
+    -- Ensure Mason installs them automatically
+    mason_lspconfig.setup({
+      ensure_installed = servers,
+    })
+
+    -- Automatically configure each server
+    for _, server in ipairs(servers) do
+      lspconfig[server].setup({})
+    end
+  end,
+},
+
+
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   config = function()
+  --     require("lualine").setup {
+  --       sections = {
+  --         lualine_c = {
+  --           {
+  --             "buffers",
+  --             symbols = { 
+  --   			  modified = " ●",
+  --   			  alternate_file = "" 
+  --   		  },
+  --             show_filename_only = true,
+  --   		  buffers_color = {
+  --             active = "lualine_a_normal",   -- highlight for current buffer
+  --             inactive = "lualine_c_inactive", -- highlight for others
+  --             },
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
+}
+
