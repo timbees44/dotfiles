@@ -2,6 +2,19 @@ return {
 	-- Plenary (required for Telescope)
 	{ "nvim-lua/plenary.nvim" },
 
+	-- Colour
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000, -- make sure it loads before colorscheme is set
+		config = function()
+			require("gruvbox").setup({
+				contrast = "hard",
+				transparent_mode = true,
+			})
+			vim.cmd("colorscheme gruvbox")
+		end,
+	},
+
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -10,7 +23,6 @@ return {
 			local telescope = require("telescope")
 			telescope.setup({
 				defaults = {
-					file_ignore_patterns = {}, -- don’t ignore anything
 					hidden = true, -- show dotfiles
 					vimgrep_arguments = {
 						"rg",
@@ -21,7 +33,6 @@ return {
 						"--column",
 						"--smart-case",
 						"--hidden", -- include hidden files
-						"--no-ignore", -- don’t respect .gitignore
 					},
 				},
 				pickers = {
@@ -44,9 +55,37 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				-- Specify the languages you want installed
+				ensure_installed = {
+					"lua",
+					"python",
+					"javascript",
+					"html",
+					"css",
+					"verilog",
+					"bash",
+					"markdown",
+					"markdown_inline",
+					"html",
+					"yaml",
+				} -- add your languages here
+			})
+		end,
 	},
 
-	-- Mason (installs LSP servers)
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
+
+	-- Mason
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
@@ -55,25 +94,37 @@ return {
 		end,
 	},
 
-	-- Mason LSP Config + LSPConfig
+	-- Mason LSP + nvim-lspconfig
 	{
 		"williamboman/mason-lspconfig.nvim",
-		dependencies = { "nvim-lspconfig", "williamboman/mason.nvim" },
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			{
+				"folke/lazydev.nvim",
+				ft = "lua", -- only load on lua files
+				opts = {
+					library = {
+						-- See the configuration section for more details
+						-- Load luvit types when the `vim.uv` word is found
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
+		},
 		config = function()
-			local mason_lspconfig = require("mason-lspconfig")
 			local lspconfig = require("lspconfig")
+			local mason_lspconfig = require("mason-lspconfig")
 
-			-- List of servers to install and configure
-			local servers = { "pyright", "lua_ls", "ruff" }
-
-			-- Ensure Mason installs them
+			-- Mason installs these automatically
+			local servers = { "lua_ls", "pyright", "ruff" }
 			mason_lspconfig.setup({ ensure_installed = servers })
 
-			-- Reusable on_attach function for format-on-save
 			local on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({ buffer = bufnr })
+					local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 					vim.api.nvim_create_autocmd("BufWritePre", {
+						group = augroup,
 						buffer = bufnr,
 						callback = function()
 							vim.lsp.buf.format({ bufnr = bufnr, async = false })
@@ -82,10 +133,12 @@ return {
 				end
 			end
 
-			-- Setup each server
+
+			-- Setup Mason-managed servers
 			for _, server in ipairs(servers) do
 				lspconfig[server].setup({ on_attach = on_attach })
 			end
 		end,
-	},
+	}
+
 }

@@ -1,5 +1,6 @@
 -- Theme & Transparency
-vim.cmd.colorscheme("retrobox")
+-- vim.cmd.colorscheme("gruvbox")
+vim.cmd(":hi statusline guibg=NONE")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
@@ -14,15 +15,15 @@ vim.opt.scrolloff = 10        -- Keep 10 lines above/below cursor
 vim.opt.sidescrolloff = 8     -- Keep 8 columns left/right of cursor
 
 -- Indentation
-vim.opt.tabstop = 4        -- Tab width
-vim.opt.shiftwidth = 4     -- Indent width
+vim.opt.tabstop = 2        -- Tab width
+vim.opt.shiftwidth = 2     -- Indent width
 vim.opt.smartindent = true -- Smart auto-indenting
 vim.opt.autoindent = true  -- Copy indent from current line
 
 -- Search settings
 vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true  -- Case sensitive if uppercase in search
-vim.opt.hlsearch = false  -- Don't highlight search results
+vim.opt.hlsearch = true   -- Don't highlight search results
 vim.opt.incsearch = true  -- Show matches as you type
 
 -- Visual settings
@@ -76,7 +77,7 @@ require("config.lazy")
 vim.keymap.set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Center screen when jumping
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+-- vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
@@ -104,21 +105,6 @@ vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" }
 -- Format
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "Format buffer" })
 
-
--- Telescope
--- local builtin = require('telescope.builtin')
--- vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
--- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-
--- Sessionizer
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<C-h>", "<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>")
-vim.keymap.set("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer -s 1<CR>")
-vim.keymap.set("n", "<C-n>", "<cmd>silent !tmux neww tmux-sessionizer -s 2<CR>")
-vim.keymap.set("n", "<C-s>", "<cmd>silent !tmux neww tmux-sessionizer -s 3<CR>")
-
 ---------------
 -- Functions
 ---------------
@@ -134,3 +120,9 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+
+---------------
+-- Custom
+---------------
+
+require("custom.floaterminal")

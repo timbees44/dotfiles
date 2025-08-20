@@ -11,54 +11,15 @@ config.color_scheme = "Gruvbox Dark (Gogh)"
 config.enable_tab_bar = false
 
 -- Background Image
-config.window_background_image = "Users/tim/Pictures/wallpaper/gruvbox-wallpapers/gruvbox_knights.png"
-config.window_background_image_hsb = {
-	brightness = 0.05, -- Reduce brightness
-	hue = 1.0,      -- Keep hue unchanged
-	saturation = 1.0, -- Reduce saturation if necessary
-}
+--config.window_background_image = "Users/tim/Pictures/wallpaper/gruvbox-wallpapers/gruvbox_knights.png"
+--config.window_background_image_hsb = {
+--	brightness = 0.05, -- Reduce brightness
+--	hue = 1.0,      -- Keep hue unchanged
+--	saturation = 1.0, -- Reduce saturation if necessary
+--}
 
 -- Window bar
 config.window_decorations = "RESIZE"
-
-config.keys = {
-	{
-		key = "B",
-		mods = "CMD",
-		action = wezterm.action.SpawnCommandInNewTab({
-			args = {
-				"zsh",
-				"-l",
-				"-c",
-				"/opt/homebrew/bin/tmuxinator start htb",
-			},
-		}),
-	},
-	{
-		key = "S",
-		mods = "CMD",
-		action = wezterm.action.SpawnCommandInNewTab({
-			args = {
-				"zsh",
-				"-l",
-				"-c",
-				"/opt/homebrew/bin/sesh connect second_brain",
-			},
-		}),
-	},
-	{
-		key = "V",
-		mods = "CMD",
-		action = wezterm.action.SpawnCommandInNewTab({
-			args = {
-				"zsh",
-				"-l",
-				"-c",
-				"/opt/homebrew/bin/tmuxinator start vps",
-			},
-		}),
-	},
-}
 
 -- and finally, return the configuration to wezterm
 return config
