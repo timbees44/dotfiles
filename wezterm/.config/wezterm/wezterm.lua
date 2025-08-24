@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
-config.color_scheme = "Gruvbox Dark (Gogh)"
+config.color_scheme = "Sonokai (Gogh)"
 
 -- Hide tab bar
 config.enable_tab_bar = false

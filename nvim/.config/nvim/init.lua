@@ -1,5 +1,5 @@
 -- Theme & Transparency
--- vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("sonokai")
 vim.cmd(":hi statusline guibg=NONE")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
@@ -120,6 +120,25 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+
+
+vim.o.showtabline = 2 -- always show
+vim.o.tabline = "%!v:lua.MyTabLine()"
+
+function _G.MyTabLine()
+	local s = ""
+	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(bufnr) then
+			local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t")
+			if bufnr == vim.api.nvim_get_current_buf() then
+				s = s .. "%#TabLineSel#" .. " " .. name .. " "
+			else
+				s = s .. "%#TabLine#" .. " " .. name .. " "
+			end
+		end
+	end
+	return s
+end
 
 ---------------
 -- Custom

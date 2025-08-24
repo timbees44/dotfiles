@@ -2,19 +2,6 @@ return {
 	-- Plenary (required for Telescope)
 	{ "nvim-lua/plenary.nvim" },
 
-	-- Colour
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000, -- make sure it loads before colorscheme is set
-		config = function()
-			require("gruvbox").setup({
-				contrast = "hard",
-				transparent_mode = true,
-			})
-			vim.cmd("colorscheme gruvbox")
-		end,
-	},
-
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -70,7 +57,12 @@ return {
 					"markdown_inline",
 					"html",
 					"yaml",
-				} -- add your languages here
+					"asm",
+				}, -- add your languages here
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = { "markdown" },
+				},
 			})
 		end,
 	},
@@ -83,6 +75,18 @@ return {
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
+	},
+
+	-- autopairs
+	{
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup{
+				check_ts = true,        -- enable treesitter integration
+				enable_check_bracket_line = true,
+				fast_wrap = {},         -- optional: enables wrapping with <M-e> by default
+			}
+		end
 	},
 
 	-- Mason
