@@ -81,10 +81,10 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup{
-				check_ts = true,        -- enable treesitter integration
+			require("nvim-autopairs").setup {
+				check_ts = false, -- enable treesitter integration
 				enable_check_bracket_line = true,
-				fast_wrap = {},         -- optional: enables wrapping with <M-e> by default
+				fast_wrap = {}, -- optional: enables wrapping with <M-e> by default
 			}
 		end
 	},
