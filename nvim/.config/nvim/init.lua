@@ -105,6 +105,10 @@ vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" }
 -- Format
 vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "Format buffer" })
 
+-- LSP
+vim.keymap.set("n", "<leader>w", vim.diagnostic.open_float)
+
+
 ---------------
 -- Functions
 ---------------
