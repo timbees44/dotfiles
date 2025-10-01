@@ -29,20 +29,6 @@ return {
 		end,
 	},
 
-	-- Sonokai
-	{
-		"sainnhe/sonokai",
-		priority = 1000,
-		config = function()
-			if colorscheme == "sonokai" then
-				vim.g.sonokai_enable_italic = true
-				-- vim.g.sonokai_style = "andromeda" -- optional, or "default"
-				vim.g.sonokai_transparent_background = 1
-				vim.cmd.colorscheme("sonokai")
-			end
-		end,
-	},
-
 	{
 		"neanias/everforest-nvim",
 		version = false,
@@ -57,5 +43,20 @@ return {
 			vim.cmd.colorscheme("everforest")
 		end
 	},
+
+	-- Sonokai
+	{
+		"sainnhe/sonokai",
+		priority = 1000,
+		config = function()
+			if colorscheme == "sonokai" then
+				vim.g.sonokai_enable_italic = true
+				-- vim.g.sonokai_style = "andromeda" -- optional, or "default"
+				vim.g.sonokai_transparent_background = 1
+				vim.cmd.colorscheme("sonokai")
+			end
+		end,
+	},
+
 
 }

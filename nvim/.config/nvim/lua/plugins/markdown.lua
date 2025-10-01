@@ -41,4 +41,21 @@ return {
 			language_icon = true,
 		},
 	},
+	config = function(_, opts)
+		require("render-markdown").setup(opts)
+
+		-- function to apply highlight links
+		local function set_md_highlights()
+			vim.api.nvim_set_hl(0, "@markup.strong", { link = "MoreMsg", bold = true })
+			vim.api.nvim_set_hl(0, "@markup.italic", { link = "SpecialKey", italic = true })
+		end
+
+		-- apply immediately
+		set_md_highlights()
+
+		-- re-apply on colorscheme change
+		vim.api.nvim_create_autocmd("ColorScheme", {
+			callback = set_md_highlights,
+		})
+	end,
 }
