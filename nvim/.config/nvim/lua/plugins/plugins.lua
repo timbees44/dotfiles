@@ -19,7 +19,6 @@ return {
 						"--line-number",
 						"--column",
 						"--smart-case",
-						"--hidden", -- include hidden files
 					},
 				},
 				pickers = {
@@ -88,61 +87,4 @@ return {
 			}
 		end
 	},
-
-	-- Mason
-	{
-		"williamboman/mason.nvim",
-		build = ":MasonUpdate",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-
-	-- Mason LSP + nvim-lspconfig
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			{
-				"folke/lazydev.nvim",
-				ft = "lua", -- only load on lua files
-				opts = {
-					library = {
-						-- See the configuration section for more details
-						-- Load luvit types when the `vim.uv` word is found
-						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-					},
-				},
-			},
-		},
-		config = function()
-			local lspconfig = require("lspconfig")
-			local mason_lspconfig = require("mason-lspconfig")
-
-			-- Mason installs these automatically
-			local servers = { "lua_ls", "pyright", "ruff" }
-			mason_lspconfig.setup({ ensure_installed = servers })
-
-			local on_attach = function(client, bufnr)
-				if client.supports_method("textDocument/formatting") then
-					local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
-					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						group = augroup,
-						buffer = bufnr,
-						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr, async = false })
-						end,
-					})
-				end
-			end
-
-
-			-- Setup Mason-managed servers
-			for _, server in ipairs(servers) do
-				lspconfig[server].setup({ on_attach = on_attach })
-			end
-		end,
-	}
-
 }

@@ -1,77 +1,53 @@
 return {
 
-  { "nvim-lua/plenary.nvim" },
+	{ "nvim-lua/plenary.nvim" },
 
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-  },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+	},
 
-  -- LSP Config
-  {
-    "neovim/nvim-lspconfig",
-  },
+	-- LSP Config
+	{
+		"neovim/nvim-lspconfig",
+	},
 
-  -- Mason for automatic server installation
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    config = function()
-      require("mason").setup()
-    end,
-  },
+	-- Mason for automatic server installation
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate",
+		config = true,
+	},
 
+	-- Mason + LSP bridge
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"williamboman/mason.nvim",
+		},
+		config = function()
+			local mason_lspconfig = require("mason-lspconfig")
 
-{
-  "williamboman/mason-lspconfig.nvim",
-  dependencies = { "nvim-lspconfig", "williamboman/mason.nvim" },
-  config = function()
-	local mason_lspconfig = require("mason-lspconfig")
-	local lspconfig = require("lspconfig")
+			-- List of servers
+			local servers = { "pyright", "lua_ls" }
 
-	    -- List of language servers you want installed and configured
-    local servers = { "pyright", "lua_ls" }
+			mason_lspconfig.setup({
+				ensure_installed = servers,
+			})
 
-    -- Ensure Mason installs them automatically
-    mason_lspconfig.setup({
-      ensure_installed = servers,
-    })
+			-- Hook Mason servers into LSP setup
+			mason_lspconfig.setup_handlers({
+				function(server)
+					vim.lsp.config[server].setup({})
+				end,
+			})
+		end,
+	},
 
-    -- Automatically configure each server
-    for _, server in ipairs(servers) do
-      lspconfig[server].setup({})
-    end
-  end,
-},
-
-
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   config = function()
-  --     require("lualine").setup {
-  --       sections = {
-  --         lualine_c = {
-  --           {
-  --             "buffers",
-  --             symbols = { 
-  --   			  modified = " ●",
-  --   			  alternate_file = "" 
-  --   		  },
-  --             show_filename_only = true,
-  --   		  buffers_color = {
-  --             active = "lualine_a_normal",   -- highlight for current buffer
-  --             inactive = "lualine_c_inactive", -- highlight for others
-  --             },
-  --           },
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
 }
-

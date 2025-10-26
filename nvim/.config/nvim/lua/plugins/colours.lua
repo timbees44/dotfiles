@@ -1,5 +1,5 @@
 -- lua/plugins/colorscheme.lua
-local colorscheme = "sonokai" -- << change this to "gruvbox" / "cosec-twilight" / "sonokai"
+local colorscheme = "sonokai"
 
 return {
 	-- Gruvbox
@@ -17,33 +17,6 @@ return {
 		end,
 	},
 
-	-- Twilight
-	{
-		"CosecSecCot/cosec-twilight.nvim",
-		priority = 1000,
-		config = function()
-			if colorscheme == "cosec-twilight" then
-				-- if it has a setup function, you can call it here
-				vim.cmd.colorscheme("cosec-twilight")
-			end
-		end,
-	},
-
-	{
-		"neanias/everforest-nvim",
-		version = false,
-		lazy = false,
-		priority = 1000, -- make sure to load this before all the other start plugins
-		-- Optional; default configuration will be used if setup isn't called.
-		config = function()
-			require("everforest").setup({
-				background = "hard",
-				transparent_background_level = 1,
-			})
-			vim.cmd.colorscheme("everforest")
-		end
-	},
-
 	-- Sonokai
 	{
 		"sainnhe/sonokai",
@@ -57,6 +30,4 @@ return {
 			end
 		end,
 	},
-
-
 }
