@@ -20,6 +20,9 @@ return {
 						"--column",
 						"--smart-case",
 					},
+					file_ignore_patterns = {
+						"venv"
+					}
 				},
 				pickers = {
 					find_files = {
