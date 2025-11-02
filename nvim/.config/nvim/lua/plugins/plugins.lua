@@ -19,6 +19,7 @@ return {
 						"--line-number",
 						"--column",
 						"--smart-case",
+						"--hidden",
 					},
 					file_ignore_patterns = {
 						"venv",

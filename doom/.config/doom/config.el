@@ -71,8 +71,6 @@
 (scroll-bar-mode -1)
 
 ;; remove indent highlighting from some languages
-(after! highlight-indent-guides
-  (setq highlight-indent-guides-method 'nil))
 
 
 
