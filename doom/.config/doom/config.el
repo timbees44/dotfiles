@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+;; (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -43,7 +43,37 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org/")
+
+;; replacing locate (doesn't work with macos) with fd
+(after! consult
+  (setq consult-locate-args "fd --type f --hidden --exclude .git --color=never"))
+
+;; adding whole system search functionality
+(defun my/consult-fd-system-wide ()
+  "Run consult-fd with / as the search root (system-wide)."
+  (interactive)
+  (let ((default-directory "/"))
+    (consult-fd nil)))
+
+(map! :leader
+      :desc "Find file (system-wide)"
+      "s F" #'my/consult-fd-system-wide)
+
+;; Minimal boarderless look
+(when (featurep 'ns)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  (add-to-list 'default-frame-alist '(undecorated . t)))
+(add-to-list 'default-frame-alist '(internal-border-width . 10))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; remove indent highlighting from some languages
+(after! highlight-indent-guides
+  (setq highlight-indent-guides-method 'nil))
+
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
