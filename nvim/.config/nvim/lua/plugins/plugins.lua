@@ -21,7 +21,8 @@ return {
 						"--smart-case",
 					},
 					file_ignore_patterns = {
-						"venv"
+						"venv",
+						".git"
 					}
 				},
 				pickers = {

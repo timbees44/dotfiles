@@ -1,5 +1,5 @@
 -- lua/plugins/colorscheme.lua
-local colorscheme = "sonokai"
+local colorscheme = "nord"
 
 return {
 	-- Gruvbox
@@ -27,6 +27,24 @@ return {
 				-- vim.g.sonokai_style = "andromeda" -- optional, or "default"
 				vim.g.sonokai_transparent_background = 1
 				vim.cmd.colorscheme("sonokai")
+			end
+		end,
+	},
+	
+	-- Nord
+	{
+		'AlexvZyl/nordic.nvim',
+		lazy = false,
+		priority = 1000,
+		config = function()
+			if colorscheme == "nord" then
+				require("nordic").setup({
+					transparent = {
+						bg = true,  -- Enable transparent background
+						float = true, -- Enable transparency for floating windows
+					},
+				})
+				vim.cmd.colorscheme("nordic")
 			end
 		end,
 	},

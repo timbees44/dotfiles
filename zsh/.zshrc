@@ -9,8 +9,8 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagacad
 
-# Export Emacs bin path
-export PATH="$HOME/.emacs.d/bin:$PATH"
+# Export doomemacs bin path
+export PATH="$PATH:~/.config/emacs/bin"
 
 # Export local/bin
 export PATH="$HOME/.local/bin:$PATH"
