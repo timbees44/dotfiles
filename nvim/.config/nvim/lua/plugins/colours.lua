@@ -1,5 +1,5 @@
 -- lua/plugins/colorscheme.lua
-local colorscheme = "nord"
+local colorscheme = "sonokai"
 
 return {
 	-- Gruvbox
@@ -9,7 +9,7 @@ return {
 		config = function()
 			if colorscheme == "gruvbox" then
 				require("gruvbox").setup({
-					contrast = "hard",
+					contrast = "soft",
 					transparent_mode = true,
 				})
 				vim.cmd.colorscheme("gruvbox")
@@ -27,10 +27,13 @@ return {
 				-- vim.g.sonokai_style = "andromeda" -- optional, or "default"
 				vim.g.sonokai_transparent_background = 1
 				vim.cmd.colorscheme("sonokai")
+			  vim.api.nvim_set_hl(0, "TabLine",      { bg = "none" })
+				vim.api.nvim_set_hl(0, "TabLineSel",   { bg = "none" })
+				vim.api.nvim_set_hl(0, "TabLineFill",  { bg = "none" })
 			end
 		end,
 	},
-	
+
 	-- Nord
 	{
 		'AlexvZyl/nordic.nvim',
@@ -40,7 +43,7 @@ return {
 			if colorscheme == "nord" then
 				require("nordic").setup({
 					transparent = {
-						bg = true,  -- Enable transparent background
+						bg = true, -- Enable transparent background
 						float = true, -- Enable transparency for floating windows
 					},
 				})
@@ -48,4 +51,19 @@ return {
 			end
 		end,
 	},
+	{
+		"vague-theme/vague.nvim",
+		priority = 1000, -- make sure to load this before all the other plugins
+		config = function()
+			if colorscheme == "vague" then
+				-- NOTE: you do not need to call setup if you don't want to.
+				require("vague").setup({
+					-- optional configuration here
+					transparent = true
+				})
+				vim.cmd("colorscheme vague")
+			end
+		end,
+	},
+
 }

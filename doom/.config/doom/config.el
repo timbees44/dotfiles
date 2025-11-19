@@ -1,4 +1,4 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -38,12 +38,48 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type `relative)
 
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/org/")
+(setq org-roam-directory (file-truename "~/Documents/org-roam"))
+(org-roam-db-autosync-mode)
+
+;; add right python
+(setq org-babel-python-command "python3")
+
+
+;; bable for org-roam code snippets
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python  . t)
+   (shell   . t)
+   (C       . t)
+   (verilog . t)
+   (asm     . t)
+   (lua     . t)))
+
+
+;; Hard wrapping org
+(after! org
+  ;; Set desired wrap column
+  (setq-default fill-column 80)
+  ;; Automatically insert newlines when typing past fill-column
+  (add-hook 'org-mode-hook #'auto-fill-mode)
+  ;; Optional: make sure truncation doesn’t interfere visually
+  (setq truncate-lines nil))
+
+;; adding project link for org roam
+(org-link-set-parameters
+ "proj"
+ :follow (lambda (path)
+           (find-file (expand-file-name path "~/projects/")))
+ :export (lambda (path desc format)
+           (format "file:%s" (expand-file-name path "~/projects/"))))
+
+
 
 ;; replacing locate (doesn't work with macos) with fd
 (after! consult
@@ -70,8 +106,32 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; remove indent highlighting from some languages
+;; Elfeed config
+(use-package! elfeed
+  :config
+  ;; Set where the elfeed database and other files go
+  (setq elfeed-db-directory "~/.elfeed"
+        elfeed-search-filter "@1-week-ago +unread"
+        elfeed-feeds
+        '(
+          ;; 📰 Tech news
+          ("https://hnrss.org/frontpage" tech)
+          ("https://planet.emacslife.com/atom.xml" emacs)
+          ("https://www.reddit.com/r/linux/.rss" linux)
+          ("https://news.ycombinator.com/rss" linux)
+          ;; 🧠 Blogs
+          ("https://sachachua.com/blog/category/emacs/feed/" emacs blog)
+          ("https://nullprogram.com/feed/" programming)
+          ;; 🎧 Podcasts (if supported)
+          ("https://feeds.simplecast.com/tOjNXec5" podcast)
+        )))
 
+;; PDF viewier and PDF tools
+(use-package pdf-view
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :hook (pdf-tools-enabled . hide-mode-line-mode)
+  :config
+  (setq pdf-view-midnight-colors '("#ABB2BF" . "#282C35")))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an

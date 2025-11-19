@@ -39,6 +39,7 @@ vim.opt.pumblend = 10                             -- Popup menu transparency
 vim.opt.winblend = 0                              -- Floating window transparency
 vim.opt.conceallevel = 0                          -- Don't hide markup
 vim.opt.concealcursor = ""                        -- Don't hide cursor line markup
+vim.opt.showtabline = 0
 
 -- File handling
 vim.opt.backup = false                            -- Don't create backup files
@@ -125,8 +126,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 
-vim.o.showtabline = 2 -- always show
-vim.o.tabline = "%!v:lua.MyTabLine()"
+vim.o.showtabline = 0 -- always show
+-- vim.o.tabline = "%!v:lua.MyTabLine()"
 
 function _G.MyTabLine()
 	local s = ""
