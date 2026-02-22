@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-;; (setq doom-font (font-spec :family "Fira Code" :size 14 :weight 'semi-light)
+(setq doom-font (font-spec :family "JetBrainsMonoNL NF" :size 16)
 ;;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -44,12 +44,11 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/org/")
-(setq org-roam-directory (file-truename "~/Documents/org-roam"))
+(setq org-roam-directory (file-truename "~/Documents/org/org-roam"))
 (org-roam-db-autosync-mode)
 
 ;; add right python
 (setq org-babel-python-command "python3")
-
 
 ;; bable for org-roam code snippets
 (org-babel-do-load-languages
@@ -80,22 +79,6 @@
            (format "file:%s" (expand-file-name path "~/projects/"))))
 
 
-
-;; replacing locate (doesn't work with macos) with fd
-(after! consult
-  (setq consult-locate-args "fd --type f --hidden --exclude .git --color=never"))
-
-;; adding whole system search functionality
-(defun my/consult-fd-system-wide ()
-  "Run consult-fd with / as the search root (system-wide)."
-  (interactive)
-  (let ((default-directory "/"))
-    (consult-fd nil)))
-
-(map! :leader
-      :desc "Find file (system-wide)"
-      "s F" #'my/consult-fd-system-wide)
-
 ;; Minimal boarderless look
 (when (featurep 'ns)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -106,25 +89,6 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Elfeed config
-(use-package! elfeed
-  :config
-  ;; Set where the elfeed database and other files go
-  (setq elfeed-db-directory "~/.elfeed"
-        elfeed-search-filter "@1-week-ago +unread"
-        elfeed-feeds
-        '(
-          ;; 📰 Tech news
-          ("https://hnrss.org/frontpage" tech)
-          ("https://planet.emacslife.com/atom.xml" emacs)
-          ("https://www.reddit.com/r/linux/.rss" linux)
-          ("https://news.ycombinator.com/rss" linux)
-          ;; 🧠 Blogs
-          ("https://sachachua.com/blog/category/emacs/feed/" emacs blog)
-          ("https://nullprogram.com/feed/" programming)
-          ;; 🎧 Podcasts (if supported)
-          ("https://feeds.simplecast.com/tOjNXec5" podcast)
-        )))
 
 ;; PDF viewier and PDF tools
 (use-package pdf-view
