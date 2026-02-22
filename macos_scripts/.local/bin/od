@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Requirements
+# Get today's full date - DONE
+# Try to open daily note
+# Copy the daily notes template to appropriate path including filename if it doesn't exist
+
+# Get todays date and day name
+today=$(date '+%Y-%m-%d-%A')
+year=$(date '+%Y')
+month=$(date '+%m-%B')
+template_path=$HOME/Documents/second_brain/templates/Daily.md
+daily_path=$HOME/Documents/second_brain/daily
+path=$HOME/Documents/second_brain/daily/${year}/${month}/${today}.md
+sb_path=$HOME/Documents/second_brain
+
+# get unchecked items from the previous day
+get_unchecked_items() {
+  prev_date=$(date -d "yesterday" '+%Y-%m-%d-%A')
+  prev_year=$(date -d "yesterday" '+%Y')
+  prev_month=$(date -d "yesterday" '+$m-%B')
+  prev_path=$HOME/Documents/second_brain/daily/${prev_year}/${prev_month}/${prev_date}.md
+
+  if [ ! -f ${prev_path} ]; then
+    return
+  fi
+
+  sed -n '/### ❓ Daily Quests/,/---/p' ${prev_path} | grep '^\- \[ \]' >/tmp/unchecked_items.txt
+}
+
+# insert unchecked items from previous day
+insert_unchecked_items() {
+  if [ -s /tmp/unchecked_items.txt ]; then
+    sed -i '/### ❓ Daily Quests/r /tmp/unchecked_items.txt' ${path}
+    rm /tmp/unchecked_items.txt
+  fi
+}
+
+# check if year and month exist for daily note
+if [ ! -d ${sb_path}/daily/${year} ]; then
+  mkdir ${sb_path}/daily/${year}
+fi
+# check if month exists
+if [ ! -d ${sb_path}/daily/${year}/${month} ]; then
+  mkdir ${sb_path}/daily/${year}/${month}
+fi
+# check if whole path to daily note exists
+if [ ! -f ${path} ]; then
+  echo "Daily note not found. Attempting to make now..."
+  # check if template exists
+  if [ ! -d ${sb_path} ]; then
+    echo "Template not found. Looks like your vault is jacked up..."
+    exit 1
+  fi
+  cp ${template_path} ${path}
+  get_unchecked_items
+  insert_unchecked_items
+fi
+
+nvim ${path}
