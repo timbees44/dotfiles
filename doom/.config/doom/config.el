@@ -22,7 +22,8 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "JetBrainsMonoNL NF" :size 16)
-;;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+;;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13)
+      )
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -44,8 +45,9 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Documents/org/")
-(setq org-roam-directory (file-truename "~/Documents/org/org-roam"))
-(org-roam-db-autosync-mode)
+(setq org-roam-directory (file-truename "~/Documents/org/roam"))
+(after! org-roam
+  (org-roam-db-autosync-mode))
 
 ;; add right python
 (setq org-babel-python-command "python3")
