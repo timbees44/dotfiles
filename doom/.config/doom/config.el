@@ -20,8 +20,9 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
-(setq doom-font (font-spec :family "JetBrainsMonoNL NF" :size 16)
+
+;; Change font depending on resolution for retina vs 1440p
+(setq doom-font (font-spec :family "JetBrainsMonoNL NF" :size 12)
 ;;       doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13)
       )
 ;;
